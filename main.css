@@ -13,8 +13,7 @@ Verison History:
 body
 {
     font-family: arial;
-    height: 768px;
-    width: 1366px;
+
 
 }
 
@@ -24,8 +23,6 @@ td.the_wheel
     background-image: url(./wheel_back.png);
     background-position: center;
     background-repeat: none;
-    width: 50%;
-    height: 50%;
 }
 
 /* Do some css reset on selected elements */
