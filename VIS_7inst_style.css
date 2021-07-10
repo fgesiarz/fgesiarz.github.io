@@ -1,0 +1,632 @@
+body{
+    overflow: visible;
+    background: rgb(55,55,55);
+    display: block;
+    width: 1024px;
+    height: 768px;
+    margin: auto;
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+#bootstrap-overrides h1 {
+    line-height: 30px;
+    color: white;
+    font-size: 160%;
+    font-weight: bold;
+    background: rgb(49,104,134);
+    text-align: center;
+    margin: auto;
+    height: 30px;
+    min-width: 1024px;
+    width: 1024px;
+    float:left;
+}
+
+.style-2 input[type="text"] {
+    padding: 10px;
+    border: solid 5px #c9c9c9;
+    transition: border 0.3s;
+    width: 80px;
+}
+.style-2 input[type="text"]:focus,
+.style-2 input[type="text"].focus {
+    border: solid 5px #969696;
+}
+
+input[type="text"] {
+    display: block;
+    color:black;
+    margin: 0;
+    width: 100%;
+    font-family: sans-serif;
+    font-size: 18px;
+    appearance: none;
+    box-shadow: none;
+
+}
+
+input[type="text"]:focus {
+    outline: none;
+}
+
+#bootstrap-overrides h2 {
+    line-height: 1.5;
+    color:white;
+    font-size: 120%;
+    font-weight: lighter;
+    text-align: justify;
+    min-width: 1024px;
+    width: 1024px;
+    float:left;
+    top: auto;
+}
+
+#bootstrap-overrides2 h2 {
+    line-height: 1;
+    color:white;
+    font-size: 100%;
+    font-weight: lighter;
+    text-align: justify;
+    min-width: 1024px;
+    width: 1024px;
+    float:left;
+    top: auto;
+}
+
+div.example1{
+    float:left;
+    min-width: 1024px;
+    margin:auto;
+    display:block;
+    top: auto;
+}
+
+#initial_instructions{
+    font-size: 120%;
+}
+
+#initial_instructions2{
+    font-size: 120%;
+}
+
+#initial_instructions3{
+    font-size: 120%;
+}
+
+b{color: rgb(255,191,97);}
+
+
+
+#bar{
+    width: 1024px;
+    background: rgb(49,104,134);
+    top:5%;
+}
+
+#uclLogo{
+    background: rgb(49,104,134);
+}
+
+
+#low_card{
+    width: 230px;
+    height: 230px;
+    position: relative;
+    margin: auto;
+}
+
+#high_card{
+    width: 230px;
+    height: 230px;
+    position: relative;
+    margin: auto;
+    -webkit-transform: translatez(0);
+    -moz-transform: translatez(0);
+    -ms-transform: translatez(0);
+    -o-transform: translatez(0);
+    transform: translatez(0);
+
+}
+
+#outcome_card{
+    width: 230px;
+    height: 230px;
+    position: relative;
+    margin: auto;
+    -webkit-transform: translatez(0);
+    -moz-transform: translatez(0);
+    -ms-transform: translatez(0);
+    -o-transform: translatez(0);
+    transform: translatez(0);
+
+}
+
+div.low_label{
+    position: absolute;
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-size: 400%;
+    top: 5%;
+    font-family: 'Open Sans', sans-serif;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+}
+
+div.high_label{
+    position: absolute;
+    margin: auto;
+    text-align: center;
+    color: white;
+    font-size: 400%;
+    top: 5%;
+    font-family: 'Open Sans', sans-serif;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+}
+
+#low_front1{
+    width: 230px;
+    height: 230px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 15px 15px 30px black;
+    position: absolute;
+    background-color: rgb(84,130,53);
+    /*background-color: rgb(46,117,182);*/
+
+    transition: -webkit-transform 1s linear;
+    transition: -moz-transform 1s ease;
+    transition: -o-transform 1s linear;
+    transition: transform 1s linear;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: perspective(600px) rotateY(0deg);
+    -moz-transform: perspective(600px) rotateY(0deg);
+    -o-transform: perspective(600px) rotateY(0deg);
+    transform: perspective(600px) rotateY(0deg);
+}
+
+#low_back1{
+    width: 230px;
+    height: 230px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 15px 15px 30px black;
+    position: absolute;
+    background-color: rgb(84,130,53);
+    /*background-color: rgb(46,117,182);*/
+
+    transition: -webkit-transform 1s linear;
+    transition: -moz-transform 1s ease;
+    transition: -o-transform 1s linear;
+    transition: transform 1s linear;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: perspective(600px) rotateY(-179deg);
+    -moz-transform: perspective(600px) rotateY(-179deg);
+    -o-transform: perspective(600px) rotateY(-179deg);
+    transform: perspective(600px) rotateY(-179deg);
+}
+
+#high_front1{
+    width: 230px;
+    height: 230px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 15px 15px 30px black;
+    position: absolute;
+    background-color: rgb(46,117,182);
+    /*background-color: rgb(84,130,53);*/
+
+    transition: -webkit-transform 1s linear;
+    transition: -moz-transform 1s ease;
+    transition: -o-transform 1s linear;
+    transition: transform 1s linear;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: perspective(600px) rotateY(0deg);
+    -moz-transform: perspective(600px) rotateY(0deg);
+    -o-transform: perspective(600px) rotateY(0deg);
+    transform: perspective(600px) rotateY(0deg);
+}
+
+#high_back1{
+    width: 230px;
+    height: 230px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 15px 15px 30px black;
+    position: absolute;
+    background-color: rgb(46,117,182);
+    /*background-color: rgb(84,130,53);*/
+
+    transition: -webkit-transform 1s linear;
+    transition: -moz-transform 1s ease;
+    transition: -o-transform 1s linear;
+    transition: transform 1s linear;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: perspective(600px) rotateY(-179deg);
+    -moz-transform: perspective(600px) rotateY(-179deg);
+    -o-transform: perspective(600px) rotateY(-179deg);
+    transform: perspective(600px) rotateY(-179deg);
+
+
+}
+
+#outcome_front1{
+    width: 230px;
+    height: 230px;
+    border-radius: 115px/115px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 15px 15px 30px black;
+    position: absolute;
+    background-color:rgb(197,90,17);
+    transition: -webkit-transform 1s linear;
+    transition: -moz-transform 1s ease;
+    transition: -o-transform 1s linear;
+    transition: transform 1s linear;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: perspective(600px) rotateY(0deg);
+    -moz-transform: perspective(600px) rotateY(0deg);
+    -o-transform: perspective(600px) rotateY(0deg);
+    transform: perspective(600px) rotateY(0deg);
+
+}
+
+#outcome_back1{
+    width: 230px;
+    height: 230px;
+    border-radius: 115px/115px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 15px 15px 30px black;
+    position: absolute;
+    background-color:rgb(197,90,17);
+    transition: -webkit-transform 1s linear;
+    transition: -moz-transform 1s ease;
+    transition: -o-transform 1s linear;
+    transition: transform 1s linear;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-transform: perspective(600px) rotateY(-179deg);
+    -moz-transform: perspective(600px) rotateY(-179deg);
+    -o-transform: perspective(600px) rotateY(-179deg);
+    transform: perspective(600px) rotateY(-179deg);
+
+}
+
+div.low_front2{
+    width: 190px;
+    height: 190px;
+    line-height: 180px;
+    border-style: solid;
+    border-width: 2px;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size: 350%;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -moz-backface-visibility: hidden;
+
+}
+
+div.low_back2{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size: 550%;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -moz-backface-visibility: hidden;
+
+}
+
+div.high_front2{
+    width: 190px;
+    height: 190px;
+    line-height: 180px;
+    border-style: solid;
+    border-width: 2px;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size: 350%;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -moz-backface-visibility: hidden;
+
+}
+
+div.high_back2{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size: 550%;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -moz-backface-visibility: hidden;
+
+}
+
+div.outcome_front2{
+    width: 190px;
+    height: 190px;
+    line-height: 180px;
+    border-radius: 95px;
+    border-style: solid;
+    border-width: 2px;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size: 350%;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -moz-backface-visibility: hidden;
+
+}
+
+div.outcome_back2{
+    width: 190px;
+    height: 190px;
+    border-radius: 95px;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-size: 550%;
+    line-height:190px;
+    text-align: center;
+    position: relative;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    -moz-backface-visibility: hidden;
+
+}
+
+#wrap_happiness{
+    width: 800px;
+    height: 250px;
+    margin: auto;
+
+}
+div.wrong{
+    display: none;
+}
+div.procede{
+    display: none;
+}
+#happiness{
+    position: absolute;
+}
+
+div.how_happy{
+    color: white;
+    width: 800px;
+    height: 50px;
+    position: relative;
+    margin: auto;
+    text-align: center;
+    font-size: 300%;
+
+
+}
+
+
+#happy_number{
+    line-height: 50px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 5px;
+    padding: 15px 15px 15px 15px;
+    position: relative;
+    text-align: center;
+    color: white;
+    font-size: 250%;
+    transition: -webkit-transform 0.5s ease-in-out;
+    transition: -moz-transform 0.5s ease-in-out;
+    transition: -o-transform 0.5s ease-in-out;
+    transition: transform 0.5s ease-in-out;
+    top: 50px;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);}
+
+div.happy_bar{
+    width: 800px;
+    height: 100px;
+    position: relative;
+    margin: auto;
+    color: white;
+
+}
+div.labels{
+    width: 800px;
+    height: 100px;
+    position: relative;
+    margin: auto;
+
+
+}
+div.vhappy{
+    position: absolute;
+    right: 100px;
+    margin-right:auto;
+    text-align: right;
+    color: white;
+    font-size: 150%;
+
+}
+
+div.vunhappy{
+    position: absolute;
+    left: 100px;
+    text-align: left;
+    color: white;
+    font-size: 150%;
+
+}
+
+#progress_bar{
+    width: 620px;
+    height: 50px;
+    position: relative;
+    margin: auto;
+
+}
+
+#progress_bar1{
+    color: white;
+    width: 620px;
+    height: 50px;
+    margin-top: 50px;
+    box-shadow: 0px 0px 30px black;
+    border-style: solid;
+    border-width: thick;
+    position: relative;
+
+
+}
+
+#progress_bar2{
+    width: 20%;
+    height: 100%;
+    -webkit-transition: width 15s linear;
+    transition: width 15s linear;
+    box-shadow: 0px 0px 10px 5px rgb(55,55,55) inset;
+    background-color: rgb(126,126,126);
+    position: absolute;
+}
+
+
+#progress2_bar{
+    width: 320px;
+    height: 50px;
+    position: relative;
+    margin: auto;
+
+}
+
+#progress2_bar1{
+    color: white;
+    width: 320px;
+    height: 50px;
+    box-shadow: 0px 0px 30px black;
+    margin-top: 50px;
+    border-style: solid;
+    border-width: thick;
+    position: relative;
+
+
+}
+
+#progress2_bar2{
+    width: 20%;
+    height: 100%;
+    -webkit-transition: width 15s linear;
+    transition: width 15s linear;
+    box-shadow: 0px 0px 10px 5px rgb(55,55,55) inset;
+    background-color: rgb(126,126,126);
+    position: absolute;
+}
+#check_answers{
+    color: black;
+}
+
+#btn {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 250% !important;
+    color: white;
+    height: 80px;
+    width: 1024px;
+}
+
+#btn-primary {
+    color: white;
+    height: 80px;
+    font-size: 250% !important;
+    width: 1024px;
+}
+
+#btn-block.round {
+    border-radius: 24px;
+    height: 80px;
+    font-size: 250% !important;
+    width: 1024px;
+}
+
+#btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active, .open > .dropdown-toggle.btn-primary {
+    height: 80px;
+    font-size: 250% !important;
+    width: 1024px;
+}
+
+#btn-primary:active, .btn-primary.active {
+    background:  rgb(125,137,29) !important;
+    box-shadow: none;
+    height: 100px;
+    font-size: 320% !important;
+    width: 1024px;
+}
