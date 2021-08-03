@@ -10,7 +10,7 @@
     <script src="https://raw.githubusercontent.com/fgesiarz/fgesiarz.github.io/master/Predictiv/MouseView/jspsych-survey-multi-select.js"></script>
     <script src="https://raw.githubusercontent.com/fgesiarz/fgesiarz.github.io/master/Predictiv/MouseView/jspsych-mouseview-start.js"></script>
     <script src="https://raw.githubusercontent.com/fgesiarz/fgesiarz.github.io/master/Predictiv/MouseView/jspsych-mouseview-stop.js"></script>
-    <link rel="stylesheet" href="https://raw.githubusercontent.com/fgesiarz/fgesiarz.github.io/master/Predictiv/MouseView/jspsych.css"></link>
+    <link rel="stylesheet" type="text/css" href="https://raw.githubusercontent.com/fgesiarz/fgesiarz.github.io/master/Predictiv/MouseView/jspsych.css"></link>
     <style>
         img {
             display: block;
@@ -118,7 +118,7 @@
         stimulus: '<div></div><br><div>\n' +
             '    <div><img src=\'A%20-%20current%20design.png\' height = 100% style = "width: 50%;"></img></div>\n' +
             '</div>',
-        choices: jsPsych.NO_KEYS,
+        choices: 'none',
         trial_duration: 2000,
         on_start: mouseview_trial_start,
 
@@ -129,7 +129,7 @@
         stimulus: '<div></div><br><div>\n' +
             '    <div><img src=\'A%20-%20current%20design.png\' height = 100% style = "width: 50%;"></img></div>\n' +
             '</div>',
-        choices: jsPsych.NO_KEYS,
+        choices: 'none',
         trial_duration: 20000,
         on_start: mouseview_parms,
         on_end: mouseview_trial_end
@@ -159,7 +159,7 @@
         stimulus: '<div style ="font-size: 32px"><b>THIS IS HOW YOU EXPLORED THE WEBSITE.</b></div><br><div>\n' +
             '    <div><img src=\'A%20-%20current%20design.png\' height = 100% style = "width: 50%;"></img></div>\n' +
             '</div>',
-        choices: jsPsych.NO_KEYS,
+        choices: 'none',
         trial_duration: 7000,
         on_start: mouseview_heatmap,
         on_end: mouseview_clear_heatmap
