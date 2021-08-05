@@ -53,12 +53,12 @@
                 },
                 overlay_alpha: {
                     type: jsPsych.plugins.parameterType.FLOAT,
-                    default: 0.5,
+                    default: 0,
                     description: "The transparancy from 0-1 of the obverlay"
                 },
                 overlay_gaussian: {
                     type: jsPsych.plugins.parameterType.INT,
-                    default:1,
+                    default:0,
                     description: "The SD of the gaussian blur for the content underneath the overlay"
                 },
                 overlay_gaussian_update: {
@@ -159,7 +159,7 @@
         mouseview.params.apertureSize = '7%'
         mouseview.params.apertureGauss = 25
         mouseview.params.overlayColour = 'White' //i.e. hex black
-        mouseview.params.overlayAlpha = 0.5
+        mouseview.params.overlayAlpha = 0.8
         mouseview.params.overlayGaussian = 5
     }
     var mouseview_heatmap = () => {
