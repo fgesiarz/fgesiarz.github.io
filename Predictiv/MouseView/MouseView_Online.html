@@ -150,18 +150,16 @@
 
     var mouseview_trial_start = ()=> {
         mouseview.logEvent('Trial Started')
-
-    }
-    var mouseview_trial_end = ()=> {
-        mouseview.logEvent('Trial Ended')
-    }
-    var mouseview_parms = () => {
         mouseview.params.apertureSize = '7%'
         mouseview.params.apertureGauss = 25
         mouseview.params.overlayColour = 'White' //i.e. hex black
         mouseview.params.overlayAlpha = 0.8
         mouseview.params.overlayGaussian = 5
     }
+    var mouseview_trial_end = ()=> {
+        mouseview.logEvent('Trial Ended')
+    }
+  
     var mouseview_heatmap = () => {
         mouseview.plotHeatMap()
     }
@@ -231,9 +229,7 @@
         fullscreen_mode: true
     });
 
-    timeline.push({
-        type: 'Mouseview-Start'
-    })
+
 
     timeline.push({
         type: 'html-keyboard-response',
@@ -241,11 +237,12 @@
             '    <div><img src=Current_design.png height = 100% style = "width: 50%;"></img></div>\n' +
             '</div>',
         choices: jsPsych.NO_KEYS,
-        trial_duration: 3000,
-        on_start: mouseview_trial_start
+        trial_duration: 3000
 
     });
-
+    timeline.push({
+        type: 'Mouseview-Start'
+    })
     timeline.push({
         type: 'html-keyboard-response',
         stimulus: '<div></div><br><div>\n' +
@@ -253,7 +250,7 @@
             '</div>',
         choices: jsPsych.NO_KEYS,
         trial_duration: 20000,
-        on_start: mouseview_parms,
+        on_start: mouseview_trial_start,
         on_end: mouseview_trial_end
     });
 
