@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/gh/jspsych/jsPsych/jspsych.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jspsych/jsPsych/plugins/jspsych-html-button-response.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jspsych/jsPsych/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jspsych/jsPsych/plugins/jspsych-preload.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jspsych/jsPsych/plugins/jspsych-fullscreen.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jspsych/jsPsych/plugins/jspsych-instructions.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jspsych/jsPsych/plugins/jspsych-survey-multi-select.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jspsych/jsPsych/css/jspsych.css">
+    <style>
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+
+        .jspsych-btn {
+            padding: 20px 20px;
+            font-size: 25px;
+            border-color: black;
+        }
+
+    </style>
+</head>
+<body></body>
+<script>
+
+
+    jsPsych.plugins["Mouseview-Start"] = (function() {
+
+        var plugin = {};
+
+        plugin.info = {
+            name: "Mouseview-Start",
+            parameters: {
+                aperture_size: {
+                    type: jsPsych.plugins.parameterType.STRING, // BOOL, STRING, INT, FLOAT, FUNCTION, KEYCODE, SELECT, HTML_STRING, IMAGE, AUDIO, VIDEO,
+                    default: "20%",
+                    description: "The percentage size of the view-window for mouse tracking"
+                },
+                aperture_gauss: {
+                    type: jsPsych.plugins.parameterType.INT,
+                    default: 10,
+                    description: "The SD of the gaussian blur for edge of the overlay apperture"
+                },
+                overlay_colour: {
+                    type: jsPsych.plugins.parameterType.STRING,
+                    default: "white",
+                    description: "The colour of the obsfucation overlay"
+                },
+                overlay_alpha: {
+                    type: jsPsych.plugins.parameterType.FLOAT,
+                    default: 0.5,
+                    description: "The transparancy from 0-1 of the obverlay"
+                },
+                overlay_gaussian: {
+                    type: jsPsych.plugins.parameterType.INT,
+                    default:1,
+                    description: "The SD of the gaussian blur for the content underneath the overlay"
+                },
+                overlay_gaussian_update: {
+                    type: jsPsych.plugins.parameterType.INT,
+                    default: 500,
+                    description: "The millisecond interval to wait for recapturing underneath for the blurring"
+                }
+            }
+        }
+
+        plugin.trial = function(display_element, trial) {
+
+
+            // define callback for when overlay complete
+            var on_complete = () => {
+                var trial_data = {
+                    window_h: mouseview.params.overHeight,
+                    window_w: mouseview.params.overWidth
+                }
+                mouseview.startTracking() // start tracking mouse movements
+                jsPsych.finishTrial(trial_data) // log the height and width then move on
+            }
+
+
+            var setup_mouseview = () => {
+                mouseview.params.apertureSize = trial.aperture_size
+                mouseview.params.apertureGauss = trial.aperture_gauss
+                mouseview.params.overlayColour = trial.overlay_colour
+                mouseview.params.overlayAlpha = trial.overlay_alpha
+                mouseview.params.overlayGaussian = trial.overlay_gaussian
+                mouseview.params.overlayGaussianInterval = trial.overlay_gaussian_update
+                mouseview.params.overlayGaussianFunc = on_complete
+                mouseview.init()
+            }
+
+            var el = document.createElement('script')
+            el.onload  = setup_mouseview
+            el.src = "https://mouseview.org/MouseView.js"
+            document.head.appendChild(el)
+
+
+        };
+
+        return plugin;
+    })();
+
+
+    jsPsych.plugins["Mouseview-Stop"] = (function() {
+
+        var plugin = {};
+
+        plugin.info = {
+            name: "Mouseview-Stop",
+            parameters: {
+            }
+        }
+
+        plugin.trial = function(display_element, trial) {
+            // stop the storage of data
+            mouseview.stopTracking()
+            mouseview.removeAll()
+            // get all the X and Y and Time values
+            var X = []
+            var Y = []
+            var T = []
+            var E = []
+            // loop through stored data
+            for (var i = 0; i < mouseview.datalogger.data.length; i++) {
+                X.push(mouseview.datalogger.data[i].x)
+                Y.push(mouseview.datalogger.data[i].y)
+                T.push(mouseview.datalogger.data[i].time)
+                E.push(mouseview.datalogger.data[i].event)
+            }
+
+            var trial_data = {
+                X: X,
+                Y: Y,
+                Time: T,
+                Event: E
+            }
+
+            jsPsych.finishTrial(trial_data)
+        };
+
+        return plugin;
+    })();
+
+    var timeline = [];
+
+    var mouseview_trial_start = ()=> {
+        mouseview.logEvent('Trial Started')
+
+    }
+    var mouseview_trial_end = ()=> {
+        mouseview.logEvent('Trial Ended')
+    }
+    var mouseview_parms = () => {
+        mouseview.params.apertureSize = '7%'
+        mouseview.params.apertureGauss = 25
+        mouseview.params.overlayColour = 'White' //i.e. hex black
+        mouseview.params.overlayAlpha = 0.5
+        mouseview.params.overlayGaussian = 5
+    }
+    var mouseview_heatmap = () => {
+        mouseview.plotHeatMap()
+    }
+    var mouseview_clear_heatmap = () => {
+        mouseview.clearHeatMap()
+    }
+
+
+
+    var images = ['Current_design.png']
+
+    timeline.push({
+        type: 'preload',
+        auto_preload: true, // automatically load all files based on the main timeline
+        images: images
+    });
+
+    timeline.push({
+        type: 'html-button-response',
+        stimulus: '<head>\n' +
+            '    <meta charset="UTF-8">\n' +
+            '    <style>\n' +
+            '        li {font-size: 24px;\n' +
+            '        margin-left: 10px;\n' +
+            '        list-style-type: disc;\n' +
+            '        }\n' +
+            '        p {\n' +
+            '            font-size: 24px;\n' +
+            '        }\n' +
+            '\n' +
+            '        body {\n' +
+            '            font-family: Helvetica, sans-serif;\n' +
+            '            line-height: 1.5;\n' +
+            '        }\n' +
+            '    \n' +
+            '    </style>\n' +
+            '</head>\n' +
+            '<body>\n' +
+            '<div style="display:block; margin-left: auto; margin-right: auto;">\n' +
+            '    <div style="display:block; margin-left: auto; margin-right: auto; width: 50%; max-width: 1000px"><img src=\'https://raw.githubusercontent.com/fgesiarz/fgesiarz.github.io/master/Predictiv/MouseView/Predictiv_logo.png\' width="100%"></img></div>\n' +
+            '    <div style="display:block; margin-left: auto; margin-right: auto; width: 50%;">\n' +
+            '        <div style = "text-align: center;"><p>Welcome to the Predictiv experiment! <br><br></p></div>\n' +
+            '        <p>Your task:</p><br>\n' +
+            '        <ul>\n' +
+            '            <li>On the next few screens we will ask you to locate some information on a website and answer a few questions about it afterwards.</li><br>\n' +
+            '            <li>Your task will be made more difficult by blurring of the website as in the example below.</li><br>\n' +
+            '            <li>You will be able to make some parts of the website clear with your mouse.</li><br>\n' +
+            '        </ul>\n' +
+            '    </div>\n' +
+            '    <div class="example" style="display:block; margin-left: auto; margin-right: auto; width: 50%; max-width: 800px"><img src=\'https://raw.githubusercontent.com/fgesiarz/fgesiarz.github.io/master/Predictiv/MouseView/BIT_example2.png\' width="100%" ></img></div>\n' +
+            '</div><br><br>\n' +
+            '\n' +
+            '\n' +
+            '</body>',
+        choices: ['Continue']
+    });
+
+
+    timeline.push({
+        type: 'fullscreen',
+        message: '<div style="display:block; margin-left: auto; margin-right: auto; width: 50%; max-width: 1000px"><img src=\'https://raw.githubusercontent.com/fgesiarz/fgesiarz.github.io/master/Predictiv/MouseView/Predictiv_logo.png\' width="100%"></img></div><br><br>\n' +
+            '<p>On the next screen, we will show you some information about booking coronavirus tests.</p><br><br>\n' +
+            '<p>The website will flash on the screen for 2 seconds.<br> Afterwards, it will become blurred and you will be able to explore it with your mouse for 20 seconds.</p><br><br>\n' +
+            '<p><b>Finally, we will ask you some questions about the website content so please try to learn as much as possible from it.</b></p><br><br>\n' +
+
+            '<p>The experiment will switch to full screen mode when you press the button below. <br><br> To exit fullscreen, please press ESC.</p><br><br>',
+        fullscreen_mode: true
+    });
+
+    timeline.push({
+        type: 'Mouseview-Start'
+    })
+
+    timeline.push({
+        type: 'html-keyboard-response',
+        stimulus: '<div></div><br><div>\n' +
+            '    <div><img src=Current_design.png height = 100% style = "width: 50%;"></img></div>\n' +
+            '</div>',
+        choices: jsPsych.NO_KEYS,
+        trial_duration: 3000,
+        on_start: mouseview_trial_start
+
+    });
+
+    timeline.push({
+        type: 'html-keyboard-response',
+        stimulus: '<div></div><br><div>\n' +
+            '    <div><img src=Current_design.png height = 100% style = "width: 50%;"></img></div>\n' +
+            '</div>',
+        choices: jsPsych.NO_KEYS,
+        trial_duration: 20000,
+        on_start: mouseview_parms,
+        on_end: mouseview_trial_end
+    });
+
+    timeline.push({
+        type: 'Mouseview-Stop'
+    })
+
+    timeline.push({
+        type: 'survey-multi-select',
+        questions: [
+            {
+                prompt: "According to the page you just saw, how can you get a coronavirus test? \n" +
+                    "\n" +
+                    "Please select all that apply.",
+                options: ["Order a test through your employer", "Visit a testing area in a local supermarket",  "Visit a walk-through site", "Order a test at home", "Visit your GP", "Visit a drive-through site"],
+                horizontal: false,
+                required: true,
+                name: 'Colors'
+            }
+        ]
+    });
+
+    timeline.push({
+        type: 'html-keyboard-response',
+        stimulus: '<div style ="font-size: 32px"><b>THIS IS HOW YOU EXPLORED THE WEBSITE.</b></div><br><div>\n' +
+            '    <div><img src=Current_design.png height = 100% style = "width: 50%;"></img></div>\n' +
+            '</div>',
+        choices: jsPsych.NO_KEYS,
+        trial_duration: 7000,
+        on_start: mouseview_heatmap,
+        on_end: mouseview_clear_heatmap
+    });
+
+
+    timeline.push({
+        type: 'fullscreen',
+        fullscreen_mode: false
+    });
+
+    timeline.push({
+        type: 'instructions',
+        pages: ['<head>\n' +
+        '    <meta charset="UTF-8">\n' +
+        '    <style>\n' +
+        '        li {font-size: 24px;\n' +
+        '        margin-left: 10px;\n' +
+        '        list-style-type: disc;\n' +
+        '        }\n' +
+        '        p {\n' +
+        '            font-size: 24px;\n' +
+        '        }\n' +
+        '\n' +
+        '        body {\n' +
+        '            font-family: Helvetica, sans-serif;\n' +
+        '            line-height: 1.5;\n' +
+        '        }\n' +
+        '    \n' +
+        '    </style>\n' +
+        '</head>\n' +
+        '<body>\n' +
+        '<div style="display:block; margin-left: auto; margin-right: auto;">\n' +
+        '    <div style="display:block; margin-left: auto; margin-right: auto; width: 50%; max-width: 1000px"><img src=\'https://raw.githubusercontent.com/fgesiarz/fgesiarz.github.io/master/Predictiv/MouseView/Predictiv_logo.png\' width="100%"></img></div>\n' +
+        '    <div style="display:block; margin-left: auto; margin-right: auto; width: 50%;">\n' +
+        '        <div style = "text-align: center;"><p>That is the end. Thank you for participating!<br><br></p></div>\n' +
+        '    </div>\n' +
+        '</div>\n' +
+        '\n' +
+        '\n' +
+        '</body>'],
+        show_clickable_nav: false,
+        on_start: mouseview_clear_heatmap
+    });
+
+    jsPsych.init({
+        timeline: timeline,
+        default_iti: 0
+
+    });
+
+
+</script>
+</html>
