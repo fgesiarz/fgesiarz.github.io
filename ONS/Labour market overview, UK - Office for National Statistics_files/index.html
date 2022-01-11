@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<!-- saved from url=(0365)https://www.ons.gov.uk/visualisations/dvc1714/dashwrapper/index.html?initialWidth=700&childId=3e1-4893-b2d2-800ab31d88b6&parentTitle=Labour%20market%20overview%2C%20UK%20-%20Office%20for%20National%20Statistics&parentUrl=https%3A%2F%2Fwww.ons.gov.uk%2Femploymentandlabourmarket%2Fpeopleinwork%2Femploymentandemployeetypes%2Fbulletins%2Fuklabourmarket%2Fdecember2021 -->
+<html lang="en" class="embedded"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Labour Market Summary Statistics, ONS</title>
+<meta name="description" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="./css" rel="stylesheet">
+<link rel="stylesheet" href="./globalStyle.css">
+<style type="text/css">
+
+	body{max-width:700px;
+	}
+	iframe{max-width:700px; float:left;}
+
+
+	#top, #mid, #btm {
+		width:100%;
+	}
+
+  h5,h6 {
+       font-size: 16px;
+       margin: 16px 0 8px 0;
+       font-weight: 700;
+       color:#323132;
+       font-family: "Open Sans";
+    }
+
+  ul, ol {
+    margin: 16px 0;
+    padding-left: 32px;
+  }
+
+  li {
+      margin: 0 0 8px 0;
+      line-height: 32px;
+      font-weight: 400;
+      font-size: 18px;
+      padding: 0;
+  }
+
+
+  a {
+      text-decoration: underline;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 32px;
+  }
+
+  .btn {
+      font-family: "Open Sans",Helvetica,Arial,sans-serif;
+      display: inline-block;
+      width: auto;
+      cursor: pointer;
+      padding: 6px 16px 10px 16px;
+      border: 0 none;
+      text-align: center;
+      -webkit-appearance: none;
+      transition: background-color 0.25s ease-out;
+  }
+
+  .btn--primary:focus {
+  background-color: #0b5d30;
+}
+
+  .btn--primary {
+  background-color: #0F8243;
+  color: #fff;
+}
+
+	  @media (max-width: 450px) {
+		#top, #btm {
+			width:100%;
+
+		};
+
+
+
+	  }
+
+    .visuallyhidden{
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+    </style>
+</head>
+<body marginheight="0" class="__bm__extension" data-new-gr-c-s-check-loaded="14.1043.0" data-gr-ext-installed="">
+
+
+<h5 class="visuallyhidden alternativetext">The number of payroll employees is above pre-pandemic levels Employment rate is up on the quarter and up on the year but still below pre-pandemic rates Unemployment rate is down on the quarter and down on the year, but still above pre-pandemic rates Inactivity rate is up on the quarter, up on the year and still above pre-pandemic rates Redundancies increased on the quarter but are still at pre-pandemic levels Total actual weekly hours worked increased on the quarter, but are still below pre-pandemic levels Vacancies increased on the quarter and continue to be at record levels Annual growth in average employee pay has previously been affected by base and compositional effects, these temporary factors have largely worked their way out of the latest growth rates.  </h5>
+<div id="dashpayrolledemployees" aria-hidden="true"><iframe src="./index(1).html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="220px"></iframe></div>
+<div id="dashemployment" aria-hidden="true"><iframe src="./index(2).html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="172px"></iframe></div>
+<div id="dashunemployment" aria-hidden="true"><iframe src="./index(3).html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="172px"></iframe></div>
+<div id="dashinactivity" aria-hidden="true"><iframe src="./index(4).html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="188px"></iframe></div>
+<div id="dashredundancy" aria-hidden="true"><iframe src="./index(5).html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="264px"></iframe></div>
+<div id="dashtotalhours" aria-hidden="true"><iframe src="./index(6).html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="242px"></iframe></div>
+<div id="dashvacancies" aria-hidden="true"><iframe src="./index(7).html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="220px"></iframe></div>
+<div id="dashearnings" aria-hidden="true"><iframe src="./index(8).html" width="100%" scrolling="no" marginheight="0" frameborder="0" height="254px"></iframe></div>
+<h6 style="clear:both;"></h6>
+<script src="./d3.min.js.download" type="text/javascript"></script>
+<script src="./modernizr.svg.min.js.download" type="text/javascript"></script>
+<script src="./pym.min.js.download" type="text/javascript"></script>
+<script>
+
+    var pymChild = null;
+    pymChild = new pym.Child();
+	pym.Child({ renderCallback: drawgraphic })
+
+d3.csv("../datatext.csv", function(error, data) {
+  console.log(data)
+  d3.select(".alternativetext").text(function(){
+    return data[0].commentary + " " + data[1].commentary + " " + data[2].commentary + " " + data[3].commentary + " " + data[4].commentary + " " + data[5].commentary + " " + data[6].commentary + " " + data[7].commentary + " ";
+  })
+});
+
+	function drawgraphic(){
+			var pymParent = new pym.Parent('dashpayrolledemployees', '../dashpayrolledemployees/index.html', {});
+      var pymParent = new pym.Parent('dashemployment', '../dashemployment/index.html', {});
+      var pymParent = new pym.Parent('dashunemployment', '../dashunemployment/index.html', {});
+      var pymParent = new pym.Parent('dashinactivity', '../dashinactivity/index.html', {});
+      var pymParent = new pym.Parent('dashredundancy', '../dashredundancy/index.html', {});
+      var pymParent = new pym.Parent('dashtotalhours', '../dashtotalhours/index.html', {});
+      var pymParent = new pym.Parent('dashvacancies', '../dashvacancies/index.html', {});
+      var pymParent = new pym.Parent('dashearnings', '../dashearnings/index.html', {});
+
+
+
+			d3.select("#smallimage").remove();
+
+
+		pymChild.sendHeight();
+
+		setTimeout(function(){
+			pymChild.sendHeight();
+		},1000);
+    setInterval(function(){
+      pymChild.sendHeight();
+    },1000);
+	}
+
+
+    </script>
+
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"></grammarly-desktop-integration></html>
